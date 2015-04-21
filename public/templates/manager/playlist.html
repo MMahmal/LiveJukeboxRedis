@@ -1,0 +1,15 @@
+<div id="playlistContent">
+    <div class="borderBottom">
+        <h2 id="trackListTitle">Playlist</h2>
+    </div>
+
+    <div class="trackList">
+        <div ng-repeat="track in roomTracks">
+            <div class="track">
+                <span class="label label-default">{{ $index + 1 }}</span>
+                <span class="trackArtist">{{ track.artist }}</span>
+                <span class="trackTitle">{{ track.title }}</span>
+            </div>
+        </div>
+    </div>
+</div>

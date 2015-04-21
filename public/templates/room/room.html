@@ -1,0 +1,11 @@
+<div ng-repeat="room in rooms">
+    <div class="roomInfo">
+        <span id="roomName">{{ room.roomName }}</span>
+        <div class="roomInfodata">
+            <span id="roomUserAdmin">Created by: {{ room.userAdmin }} </span>
+            <br>
+            <span id="roomUsersIn">Current Listeners: 12</span>
+            <button id="roomBtnJoin" class="btn btn-lg btn-primary" ng-click="join(room.userAdmin)">Join</button>
+        </div>
+    </div>
+</div>

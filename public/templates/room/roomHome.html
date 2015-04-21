@@ -1,0 +1,26 @@
+<div class="mainContent">
+    <div id="welcomeTemplate">
+        <h1>{{ roomData.roomName }}</h1>
+
+        <p> Created by {{ roomData.userAdmin }}</p>
+    </div>
+
+    <input type="text" class="search-query" placeholder="Search...">
+</div>
+
+
+<div id="rightContent" ng-controller="playlistCtrl">
+    <div ng-include src="playlistContentViewPath"></div>
+</div>
+
+
+<div id="bottomContent" class="fixed">
+    <div id="player">
+        <img id="playerBack" class="playerImage" src="../ressources/img/back.png">
+        <img id="playerStop" class="playerImage" src="../ressources/img/stop.png">
+        <a >
+            <img id="playerPlay" class="playerImage" src="../ressources/img/play.png" ng-click="play()">
+        </a>
+        <img id="playerNext" class="playerImage" src="../ressources/img/next.png">
+    </div>
+</div>

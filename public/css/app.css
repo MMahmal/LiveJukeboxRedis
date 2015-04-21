@@ -1,0 +1,172 @@
+/* app css stylesheet */
+
+body{
+    background-color: white !important;
+    margin: 0 0 0 0 !important;
+    padding: 1 0 0 0 !important;
+    overflow: hidden;
+}
+
+#leftMenu{
+    width: 20%;
+    height: 100%;
+    background-color: #6ca8eb;
+    border-right: 4px solid #3667d0;
+    float: left;
+    padding: 5px 5px 5px 5px;
+    margin-right:20px;
+    margin-top: -1px;
+}
+
+#menuTitle{
+    border-bottom: 2px solid #3667d0;
+    padding-bottom: 10px;
+}
+
+#rightContent{
+    width: 40%;
+    height: 100%;
+    background-color: #abcef5;
+    border-left: 4px solid #3667d0;
+    padding: 5px 5px 5px 5px;
+    float:right;
+    position: relative;
+    margin-top: -1px;
+}
+
+.mainContent{
+    float:left;
+    width: 38%;
+}
+
+#loginTemplate{
+    margin-left: 25%;
+    margin-top: 10%;
+}
+
+#welcomeTemplate{
+}
+
+#welcomeTemplate h1{
+    text-align: center;
+}
+
+#createUserTemplate {
+    margin-left: 25%;
+    margin-top: 10%;
+}
+
+#trackListTitle{
+    margin-left: 40%;
+}
+
+.tracklist{
+    margin-top: 20px;
+    overflow-x:scroll;
+    height: 70%;
+    padding : 5px 5px 5px 5px;
+    background-color: #454545;
+    border-radius: 10px 10px 10px 10px;
+    margin-bottom: 20px;
+}
+
+.track{
+    background-color: #999999;
+    border-radius: 10px 10px 10px 10px;
+    width : 100%;
+    height: 75px;
+    padding: 5px 5px 5px 5px;
+    margin-bottom: 10px;
+}
+
+.trackActive{
+    background-color: #D2413A !important;
+}
+
+.borderBottom{
+    border-bottom: 2px solid #3667d0;
+    padding-bottom: 10px !important;
+}
+
+.borderTop{
+    border-top: 2px solid #3667d0;
+    padding-top: 10px !important;
+}
+
+.fixed{
+    position:fixed;
+}
+
+#bottomContent{
+    width:100% !important;
+    bottom: 0;
+    border-top: 2px solid;
+    background-color: floralwhite;
+}
+
+#player{
+    margin-left: 30%;
+}
+
+.playerImage{
+    float:left;
+    max-height:50px;
+    max-width: 50px;
+}
+
+.trackArtist{
+    font-size: 20px;
+    font-weight: 100;
+}
+
+.trackTitle{
+    font-size: 15px;
+}
+
+.form-input-style{
+    width: 300px !important;
+}
+
+.form-margin-top{
+    margin-top: 10px;
+}
+
+#homePage{
+
+}
+
+#homePage h1{
+    text-align: center;
+    margin-bottom: 50px;
+    border-bottom: 2px solid grey;
+}
+
+#roomList{
+    width: 100%;
+}
+
+.roomInfo{
+    background-color: lightgrey;
+    padding: 40px 20px 20px 20px;
+    border: solid 2px grey;
+    border-radius: 100%;
+    width: 200px;
+    height: 200px;
+    float:left;
+    margin-left: 20px;
+}
+
+.roomInfodata{
+    margin-top: 20px;
+}
+
+#roomName{
+    margin-left: 30px;
+    font-size: 20px;
+    border-bottom: 1px solid grey;
+}
+
+#roomBtnJoin{
+    margin-left: 45px;
+    margin-top: 10px;
+}

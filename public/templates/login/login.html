@@ -1,0 +1,15 @@
+<div class="mainContent" id="loginTemplate">
+    <h1>Login</h1>
+
+    <form class="form-signin">
+
+        <input type="text" name="user" class="form-control form-input-style"
+               placeholder="Username" autofocus ng-model="loginForm.user">
+
+        <input type="password" name="password" class="form-control form-input-style form-margin-top"
+               placeholder="Password" ng-model="loginForm.password">
+        <button class="btn btn-lg btn-primary form-margin-top" ng-click="login()">Sign In</button>
+        <button class="btn btn-lg btn-primary form-margin-top" ng-click="createUser()">Create Account</button>
+    </form>
+
+</div>

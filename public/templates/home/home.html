@@ -1,0 +1,19 @@
+<div id="homePage">
+    <h1>WELCOME TO LIVEJUKEBOX</h1>
+
+
+    <div id="roomList">
+        <div ng-repeat="room in rooms">
+            <div class="roomInfo">
+                <span id="roomName">{{ room.Name }}</span>
+                <div class="roomInfodata">
+                    <span id="roomUserAdmin">Created by: {{ room.Admin }} </span>
+                    <br>
+                    <span id="roomUsersIn">Current Listeners: 12</span>
+                    <button id="roomBtnJoin" class="btn btn-lg btn-primary" ng-click="join(room.Admin)">Join</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

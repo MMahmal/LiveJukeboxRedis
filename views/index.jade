@@ -1,0 +1,46 @@
+html(ng-app="LiveJukebox")
+    head
+        meta(charset='utf8')
+        title LiveJukebox
+        link(rel='stylesheet', href='/css/app.css')
+        link(rel='stylesheet', href='/ressources/lib/bootstrap.css')
+        link(rel='stylesheet', href='/ressources/lib/toastr.css')
+        script(src="/ressources/lib/jquery.js")
+        script(src="/ressources/lib/bootstrap.js")
+        script(src="js/audio5js/audio5.js")
+
+
+    body
+
+        div(id="leftMenu")
+            h1(id="menuTitle") LiveJukebox
+            ul(class="nav nav-pills nav-stacked")
+                li(role="presentation")
+                    a(href="#/") Home
+                li(role="presentation")
+                    a(href="#/login") Join
+                li(role="presentation")
+                    a(href="#/") Search
+        div(id="content")
+            div(ng-view)
+
+
+        script(src="/ressources/lib/angular.js")
+        script(src="/ressources/lib/angular-route.js")
+        script(src="/ressources/lib/toastr.js")
+        script(src='js/app.js')
+        script(src='js/home/homeModule.js')
+        script(src='js/home/homeControllers.js')
+        script(src='js/home/homeServices.js')
+        script(src='js/login/loginModule.js')
+        script(src='js/login/loginControllers.js')
+        script(src='js/login/loginServices.js')
+        script(src='js/playlist/playlistModule.js')
+        script(src='js/playlist/playlistServices.js')
+        script(src='js/playlist/playlistControllers.js')
+        script(src='js/user/userModule.js')
+        script(src='js/user/userControllers.js')
+        script(src='js/user/userServices.js')
+        script(src='js/room/roomModule.js')
+        script(src='js/room/roomControllers.js')
+        script(src='js/room/roomServices.js')
