@@ -10,10 +10,15 @@
                     <span id="roomUserAdmin">Created by: {{ room.Admin }} </span>
                     <br>
                     <span id="roomUsersIn">Current Listeners: 12</span>
-                    <button id="roomBtnJoin" class="btn btn-lg btn-primary" ng-click="join(room.Admin)">Join</button>
+                    <button id="roomBtnJoin" class="btn btn-lg btn-primary" ng-click="join(room.Admin,room.Name)">Join</button>
                 </div>
             </div>
         </div>
+    </div>
+
+
+    <div id="roomCreate">
+        <button class="btn btn-lg btn-primary" ng-click="newRoom()">Create Room</button>
     </div>
 
 </div>

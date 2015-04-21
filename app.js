@@ -48,6 +48,7 @@ app.get('/rest/connected/:idUser', user.isConnected);
 
 
 app.get('/rest/room', room.getAll);
+app.post('/rest/room', room.create);
 app.get('/rest/room/:idRoom', room.getOne);
 app.get('/rest/roomsInfo', room.getInfo);
 

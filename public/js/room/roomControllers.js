@@ -3,7 +3,6 @@ roomModule.controller('RoomCtrl', ['$scope', 'RoomService', '$rootScope', '$loca
 
     $scope.roomData = [];
 
-
     if($rootScope.isAuth==false){
      $scope.mainContentView = "login";
      $scope.mainContentViewPath = "templates/login/login.html"
@@ -20,15 +19,18 @@ roomModule.controller('RoomCtrl', ['$scope', 'RoomService', '$rootScope', '$loca
 
         console.log($rootScope.idRoomSelected);
 
+        var room = {};
+        room.name = $rootScope.idRoomSelected;
+
         if($rootScope.idRoomSelected == undefined)
             $location.path('/');
         else
-            RoomService.getAll($rootScope.idRoomSelected).success(function (data) {
+            RoomService.getAll(room.name).success(function (data) {
                 if (data != undefined) {
                     $scope.roomData = data;
                 }
             });
-            RoomService.getTracks($rootScope.idRoomSelected).success(function(data){
+            RoomService.getTracks(room.name).success(function(data){
                 if(data != undefined){
                     $scope.roomTracks = data
                     console.log($scope.roomTracks);
@@ -37,5 +39,7 @@ roomModule.controller('RoomCtrl', ['$scope', 'RoomService', '$rootScope', '$loca
             });
     }
     displayRoomData();
+
+
 
 }]);

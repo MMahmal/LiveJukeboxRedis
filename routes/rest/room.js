@@ -32,33 +32,38 @@ module.exports = {
     getInfo: function(req, res){
 
         db.clientSub.hvals(db.ROOMS, function (err, obj) {
+            console.log("obj :", obj);
+            if(obj !== null)
+                var StringRooms = JSON.stringify(obj);
+                console.log("StringRooms : ", StringRooms);
+                var rooms = JSON.parse(StringRooms);
+                console.log("rooms JSON :", rooms);
 
-            var StringRooms = JSON.stringify(obj);
+                var ListRooms = [];
 
-            var rooms = JSON.parse(StringRooms);
+                for(var i=0; i < (rooms.length);i++){
 
-            var ListRooms = [];
+                    var parse = rooms[i];
+                    console.log("current Parse : ",parse);
 
-            for(var i=0; i < (rooms.length);i++){
 
-                var parse = rooms[i];
+                    console.log("Partial Parse :", partialParse);
+                    try {
+                        var partialParse = JSON.parse(parse);
+                    } catch(err) {
+                        console.log(err);
+                    }
 
-                try {
-                    var partialParse = JSON.parse(parse);
-                } catch(err) {
-                    console.log(err);
+                    var objPush = {
+                        Name: partialParse.roomName,
+                        Admin: partialParse.userAdmin
+                    }
+                    ListRooms.push(objPush);
                 }
 
-                var objPush = {
-                    Name: partialParse.roomName,
-                    Admin: partialParse.userAdmin
-                }
-                ListRooms.push(objPush);
-            }
+                console.log(ListRooms);
 
-            console.log(ListRooms);
-
-            res.json(ListRooms);
+                res.json(ListRooms);
 
         });
     },
@@ -68,19 +73,26 @@ module.exports = {
      * CREATE in Hash ROOMS and Hash ROOM
      * **/
     create: function(req, res){
-        var user = {};
+        var room = {};
 
-        console.log(req.body.user);
-        console.log(req.body.mail);
-        console.log(req.body.password);
+        console.log("Body:", req.body);
 
+        room.idRoom = "idRoom:" + req.body.userAdmin + ":" + req.body.roomName;
+        room.Name = req.body.roomName;
+        room.Admin = req.body.userAdmin;
+        //user.data = "[{"+ '"username":' + '"' + req.body.user + '"' +"," + '"mail":' + '"' + req.body.mail + '"'
+        //+ "," + '"password":' + '"' + req.body.password + '"' + "}]";
 
-        user.id = "idUser:" + req.body.user;
-        user.data = "{"+ '"username":' + '"' + req.body.user + '"' +"," + '"mail":' + '"' + req.body.mail + '"'
-        + "," + '"password":' + '"' + req.body.password + '"' + "}";
+        var hash = {};
 
+        console.log("Room DATA : ", room);
+        hash = db.ROOM + ":" + room.Admin + ":" + room.Name;
+        console.log("Hash :",hash);
+        var data = '{"roomName":' + '"' + room.Name + '"' +',"userAdmin":' + '"' + room.Admin + '"}';
+        console.log("Data :",data);
+        db.clientPub.hmset(db.ROOMS,room.idRoom, data);
 
-        db.clientPub.hmset(db.USER, user.id, user.data);
+        db.clientPub.hmset(hash, "roomName", room.Name,"userAdmin", room.Admin);
 
         res.sendStatus(200, 'OK');
     },

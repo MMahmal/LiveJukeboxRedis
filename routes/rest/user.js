@@ -37,8 +37,8 @@ module.exports = {
 
 
         user.id = "idUser:" + req.body.user;
-        user.data = "{"+ '"username":' + '"' + req.body.user + '"' +"," + '"mail":' + '"' + req.body.mail + '"'
-        + "," + '"password":' + '"' + req.body.password + '"' + "}";
+        user.data = "[{"+ '"username":' + '"' + req.body.user + '"' +"," + '"mail":' + '"' + req.body.mail + '"'
+        + "," + '"password":' + '"' + req.body.password + '"' + "}]";
 
 
         db.clientPub.hmset(db.USER, user.id, user.data);

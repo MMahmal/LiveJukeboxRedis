@@ -15,7 +15,7 @@ userModule.controller('CreateUserCtrl', ['$scope', '$location', 'UserService', f
 
         UserService.create($scope.formUser).success(function(){
 
-            toastr.success("Inscription réussie !", "Félicitations !");
+            toastr.success("User Created!");
 
             $location.path("/login");
         });

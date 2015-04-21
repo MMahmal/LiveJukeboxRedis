@@ -1,0 +1,25 @@
+<div class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h1>New Room</h1>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <form class="form-signin">
+                    <input type="text" name="name" class="form-control form-input-style"
+                           placeholder="Room Name" autofocus required ng-model="formRoom.name">
+
+                    <span>Created By : {{ userConnected }}</span>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-lg btn-primary form-margin-top" ng-click="createRoom()">Create</button>
+            </div>
+        </div>
+    </div>
+</div>

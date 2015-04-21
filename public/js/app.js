@@ -2,6 +2,7 @@
 
 var app = angular.module('LiveJukebox', [
   'ngRoute',
+    'mgcrea.ngStrap',
   'playlist.module',
   'login.module',
   'home.module',

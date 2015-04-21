@@ -1,8 +1,7 @@
 <div class="mainContent" id="createUserTemplate">
     <h1>New User</h1>
 
-    <form name="formUser" class="form-signin" ng-submit="create()">
-
+    <form class="form-signin" ng-submit="create()">
         <input type="text" name="user" class="form-control form-input-style"
                placeholder="Username" autofocus required ng-model="formUser.user">
         <input type="password" name="password" class="form-control form-input-style form-margin-top"
@@ -13,5 +12,4 @@
                placeholder="Mail Address" required ng-model="formUser.mail">
         <button type="submit" class="btn btn-lg btn-primary form-margin-top">Create</button>
     </form>
-
 </div>

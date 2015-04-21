@@ -4,14 +4,13 @@ loginModule.controller('LoginCtrl', ['$scope', '$rootScope', '$location', 'Login
 
     toastr.info('Please, Log In!');
 
-    $scope.login = function(){
-
+    $scope.login = function(userConnected){
 
         LoginService.login($scope.loginForm).success(function(){
 
             toastr.success("Authentication Successful !");
 
-            $rootScope.isAuth = true;
+            $rootScope.userConnected = userConnected;
             $location.path("/");
         });
     };

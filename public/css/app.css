@@ -170,3 +170,7 @@ body{
     margin-left: 45px;
     margin-top: 10px;
 }
+
+.modal-backdrop{
+    opacity: 0.3;
+}
