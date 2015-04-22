@@ -1,5 +1,5 @@
-roomModule.controller('RoomCtrl', ['$scope', 'RoomService', '$rootScope', '$location',
-    function($scope, RoomService, $rootScope, $location) {
+roomModule.controller('RoomCtrl', ['$scope', 'RoomService', 'SoundcloudService', '$rootScope', '$location',
+    function($scope, RoomService, SoundloudService, $rootScope, $location) {
 
     $scope.roomData = [];
 
@@ -40,6 +40,28 @@ roomModule.controller('RoomCtrl', ['$scope', 'RoomService', '$rootScope', '$loca
     }
     displayRoomData();
 
+    $scope.closeRoom = function(){
+        RoomService.delete($rootScope.idRoomSelected).success(function () {
+            toastr.warning("Room :" +  $scope.roomData.roomName +  " has been deleted");
+            $location.path('/');
+        });
+    };
 
+    $scope.leaveRoom = function(){
+        $location.path('/');
+    };
 
+    SoundloudService.Initialize();
+
+    $scope.trackSearchResults = [];
+
+    $scope.getTrackSearch = function(trackSearch){
+
+        SoundloudService.getTrack(trackSearch, function(data, status){
+            $scope.trackSearchResults = data;
+
+            console.log($scope.trackSearchResults);
+        });
+
+    }
 }]);

@@ -50,9 +50,13 @@ app.get('/rest/connected/:idUser', user.isConnected);
 app.get('/rest/room', room.getAll);
 app.post('/rest/room', room.create);
 app.get('/rest/room/:idRoom', room.getOne);
+app.delete('/rest/room/:idRoom', room.delete);
 app.get('/rest/roomsInfo', room.getInfo);
 
 app.get('/rest/tracks/:idRoom', track.getAll);
+app.patch('/rest/tracks/:idRoom/search', track.pathSearch);
+app.post('/rest/tracks/:idRoom/search', track.postSearch);
+app.get('/rest/tracks/:idRoom/search', track.getSearch);
 
 
 /**

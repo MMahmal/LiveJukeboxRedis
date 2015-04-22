@@ -43,6 +43,10 @@ module.exports = {
 
         db.clientPub.hmset(db.USER, user.id, user.data);
 
+        var hash = db.USER + ":" + req.body.user;
+
+        db.clientPub.hmset(hash, "username", req.body.user, "mail", req.body.mail, "password", req.body.password);
+
         res.sendStatus(200, 'OK');
     },
     login: function(req, res){

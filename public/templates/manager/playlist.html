@@ -5,11 +5,14 @@
 
     <div class="trackList">
         <div ng-repeat="track in roomTracks">
-            <div class="track">
-                <span class="label label-default">{{ $index + 1 }}</span>
-                <span class="trackArtist">{{ track.artist }}</span>
-                <span class="trackTitle">{{ track.title }}</span>
-            </div>
+            <button ng-click="playPause($index)" ng-class="{'trackActive': player.playing === track.src}">
+                <div class="track">
+                    <span class="label label-default">{{ $index + 1 }}</span>
+                    <span class="trackArtist">{{ track.artist }} {{track.user.username}}</span>
+                    <span class="trackTitle">{{ track.title }}</span>
+                    Play
+                </div>
+            </button>
         </div>
     </div>
 </div>

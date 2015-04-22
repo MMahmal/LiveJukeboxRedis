@@ -1,11 +1,21 @@
 <div class="mainContent">
     <div id="welcomeTemplate">
+        <button class="btn" ng-click="leaveRoom()">Leave</button>
         <h1>{{ roomData.roomName }}</h1>
+
 
         <p> Created by {{ roomData.userAdmin }}</p>
     </div>
 
-    <input type="text" class="search-query" placeholder="Search...">
+    <input type="text" class="search-query" placeholder="Search..." ng-model="searchName">
+    <button ng-click="getTrackSearch(searchName)">Search</button>
+
+    <div id="searchList">
+        <div ng-repeat="result in trackSearchResults">
+            Title : {{result.title}}
+        </div>
+
+    </div>
 </div>
 
 

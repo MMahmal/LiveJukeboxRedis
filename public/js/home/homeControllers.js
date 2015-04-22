@@ -52,7 +52,6 @@ homeModule.controller('homeCtrl', ['$scope', '$rootScope', '$modal', '$route', '
 
         var roomData = {};
         roomData.roomName = $scope.formRoom.name;
-        //roomData.push(roomName);
         roomData.userAdmin = $rootScope.userConnected;
 
         HomeService.createRoom(roomData).success(function () {
@@ -60,5 +59,9 @@ homeModule.controller('homeCtrl', ['$scope', '$rootScope', '$modal', '$route', '
             $route.reload();
             toastr.success("Room Created !");
         });
+    };
+
+    $scope.cancelModal = function(){
+        $scope.newModal.hide();
     }
 }]);

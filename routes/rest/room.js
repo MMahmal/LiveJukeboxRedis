@@ -6,7 +6,7 @@
 
 var db = require('../../database');
 
-
+var redis = require('redis');
 var data = {};
 
 
@@ -35,19 +35,17 @@ module.exports = {
             console.log("obj :", obj);
             if(obj !== null)
                 var StringRooms = JSON.stringify(obj);
-                console.log("StringRooms : ", StringRooms);
+                //console.log("StringRooms : ", StringRooms);
                 var rooms = JSON.parse(StringRooms);
-                console.log("rooms JSON :", rooms);
+                //console.log("rooms JSON :", rooms);
 
                 var ListRooms = [];
 
                 for(var i=0; i < (rooms.length);i++){
 
                     var parse = rooms[i];
-                    console.log("current Parse : ",parse);
+                    //console.log("current Parse : ",parse);
 
-
-                    console.log("Partial Parse :", partialParse);
                     try {
                         var partialParse = JSON.parse(parse);
                     } catch(err) {
@@ -75,21 +73,19 @@ module.exports = {
     create: function(req, res){
         var room = {};
 
-        console.log("Body:", req.body);
+        //console.log("Body:", req.body);
 
         room.idRoom = "idRoom:" + req.body.userAdmin + ":" + req.body.roomName;
         room.Name = req.body.roomName;
         room.Admin = req.body.userAdmin;
-        //user.data = "[{"+ '"username":' + '"' + req.body.user + '"' +"," + '"mail":' + '"' + req.body.mail + '"'
-        //+ "," + '"password":' + '"' + req.body.password + '"' + "}]";
 
         var hash = {};
 
-        console.log("Room DATA : ", room);
+        //console.log("Room DATA : ", room);
         hash = db.ROOM + ":" + room.Admin + ":" + room.Name;
-        console.log("Hash :",hash);
+        //console.log("Hash :",hash);
         var data = '{"roomName":' + '"' + room.Name + '"' +',"userAdmin":' + '"' + room.Admin + '"}';
-        console.log("Data :",data);
+        //console.log("Data :",data);
         db.clientPub.hmset(db.ROOMS,room.idRoom, data);
 
         db.clientPub.hmset(hash, "roomName", room.Name,"userAdmin", room.Admin);
@@ -97,6 +93,19 @@ module.exports = {
         res.sendStatus(200, 'OK');
     },
     delete: function(req, res){
+        console.log("idRoom Get:", req.params.idRoom);
+
+        var key = '"' + "idRoom:" + req.params.idRoom + '"';
+
+        var hash = '"' + db.ROOMS + ":" + key + '"';
+
+        console.log("Key :", key);
+
+        //db.clientPub.hdel(db.ROOMS, key, redis.print);
+        //db.clientPub.send_command("hdel", [ db.ROOMS, key ] , redis.print );
+        db.clientPub.del(key, function(err, rows){
+
+        });
 
     }
 

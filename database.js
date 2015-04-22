@@ -27,6 +27,7 @@ var database = {
     CONNECTED: "CONNECTEDUSER",
     ROOM: "ROOM",
     ROOMS: "ROOMS",
+    TRACK: "TRACK",
     TRACKS: "TRACKS",
 
     clientSub : clientSub,
