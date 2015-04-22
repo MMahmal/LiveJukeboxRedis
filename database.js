@@ -29,6 +29,7 @@ var database = {
     ROOMS: "ROOMS",
     TRACK: "TRACK",
     TRACKS: "TRACKS",
+    PLAYLIST: "PLAYLIST",
 
     clientSub : clientSub,
     clientPub : clientPub

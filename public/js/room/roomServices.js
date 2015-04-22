@@ -32,6 +32,10 @@ roomModule.factory('RoomService', ['$http', function ($http) {
 
     };
 
+    roomFunction.setPlaylist = function(trackData) {
+        return $http.post('http://localhost:3000/rest/playlist' + trackData)
+    }
+
 
     return roomFunction;
 

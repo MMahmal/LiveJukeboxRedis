@@ -7,17 +7,26 @@
         <p> Created by {{ roomData.userAdmin }}</p>
     </div>
 
-    <input type="text" class="search-query" placeholder="Search..." ng-model="searchName">
-    <button ng-click="getTrackSearch(searchName)">Search</button>
+    <input type="text" class="search-query" placeholder="Search Track..." ng-model="searchTrackName">
+    <input type="text" class="search-query" placeholder="Search Artist..." ng-model="searchUserName">
+    <button ng-click="getTrackSearch(searchTrackName, searchUserName)">Search</button>
 
-    <div id="searchList">
-        <div ng-repeat="result in trackSearchResults">
-            Title : {{result.title}}
+
+
+    <div class="searchList">
+        <div ng-repeat="result in SearchResults">
+            <button ng-click="trackByUser(result)">
+                <div class="searchResultTrack">
+                    <span ng-if="result.title!=undefined">Title : {{result.title}}</span>
+                    <span ng-if="result.user.username!=undefined">User : {{result.user.username}}</span>
+                    <span ng-if="result.username!=undefined">User : {{result.username}}</span>
+                    <span>Id : {{result.id}}</span>
+                    <span>URI : {{result.uri}}</span>
+                </div>
+            </button>
         </div>
-
     </div>
 </div>
-
 
 <div id="rightContent" ng-controller="playlistCtrl">
     <div ng-include src="playlistContentViewPath"></div>

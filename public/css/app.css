@@ -180,3 +180,15 @@ body{
     right:0;
     position:fixed;
 }
+
+.searchResultTrack{
+    border-bottom: 1px solid grey;
+}
+
+.searchList{
+    overflow-x: scroll;
+    height:400px;
+    border-top: solid 2px grey;
+    margin-top: 10px;
+    padding-top: 10px;
+}

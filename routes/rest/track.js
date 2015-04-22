@@ -1,10 +1,4 @@
-/**
- * Created by MhD on 20/04/15.
- */
 var db = require('../../database');
-
-
-var data = {};
 
 
 module.exports = {

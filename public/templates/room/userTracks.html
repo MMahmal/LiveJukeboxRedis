@@ -1,0 +1,31 @@
+<div class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h1>{{userSelected.username}}Tracks</h1>
+                </div>
+            </div>
+
+            <div class="modal-body">
+                <div class="searchList">
+                    <div ng-repeat="resultModal in SearchModalResults">
+
+                        <div class="searchResultTrack">
+                            <span>Title : {{resultModal.title}}</span>
+                            <span>User : {{resultModal.user.username}}</span>
+                            <span>Id : {{resultModal.id}}</span>
+                            <span>URI : {{resultModal.uri}}</span>
+                            <button ng-click="playTrack(resultModal.id, 'play')">Play</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-lg btn-primary form-margin-top" ng-click="closeModal()">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
