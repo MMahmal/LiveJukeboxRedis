@@ -1,6 +1,3 @@
-/**
- * Created by MhD on 17/03/15.
- */
 var redis = require("redis");
 
 var clientSub = redis.createClient("6379", "chmaks.me");

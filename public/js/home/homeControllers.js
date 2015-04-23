@@ -1,21 +1,5 @@
 homeModule.controller('homeCtrl', ['$scope', '$rootScope', '$modal', '$route', 'HomeService', '$location',
     function($scope, $rootScope, $modal, $route, HomeService, $location) {
-    /*if($rootScope.isAuth==false){
-        $scope.mainContentView = "login";
-        $scope.mainContentViewPath = "templates/login/login.html"
-    }
-    else{
-        $scope.mainContentView = "home";
-        $scope.mainContentViewPath ="templates/home/welcome.html";
-
-        toastr.info('Coucou les Loulous !');
-    } */
-
-
-    /*$scope.message = 'WELCOME';
-    $scope.id = '91809' */
-
-
 
     if($rootScope.userConnected == undefined)
         $location.path('/login');

@@ -1,5 +1,3 @@
-'use strict';
-
 loginModule.controller('LoginCtrl', ['$scope', '$rootScope', '$route', '$location', 'LoginService',
     function($scope, $rootScope, $route, $location, LoginService) {
 

@@ -23,14 +23,6 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var env = process.env.NODE_ENV || 'development';
-
-
-// production only
-if (env === 'production') {
-  //TODO
-}
-
 
 /**
  * Routes
@@ -42,11 +34,9 @@ app.get('/', routes.index);
 app.post('/rest/user', user.create);
 app.get('/rest/user', user.getAll);
 app.get('/rest/user/:idUser', user.getOne);
-app.delete('/rest/user/:idUser', user.delete);
+//app.delete('/rest/user/:idUser', user.delete);
 
 app.post('/rest/login', user.login);
-app.get('/rest/connected/:idUser', user.isConnected);
-
 
 app.get('/rest/room', room.getAll);
 app.post('/rest/room', room.create);
@@ -56,8 +46,6 @@ app.get('/rest/roomsInfo', room.getInfo);
 
 app.get('/rest/tracks/:idRoom', track.getAll);
 app.patch('/rest/tracks/:idRoom/search', track.pathSearch);
-app.post('/rest/tracks/:idRoom/search', track.postSearch);
-app.get('/rest/tracks/:idRoom/search', track.getSearch);
 
 app.post('/rest/playlist/:idRoom', playlist.addTrack);
 app.get('/rest/playlist/:idRoom', playlist.getAll);

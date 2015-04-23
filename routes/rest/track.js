@@ -26,17 +26,6 @@ module.exports = {
         db.clientSub.set(setName, tracksList);
         return res.json(tracksList);
 
-    },
-    postSearch: function(req, res){
-        //console.log("Body: ", req.body);
-        //var setName = db.TRACK + ":" + req.params.idRoom;
-
-
-    },
-    getSearch: function(req, res){
-        //console.log("Body: ", req.params.tracksResult);
-
-        //return res.json(req.params.tracksResult);
     }
 };
 
