@@ -13,9 +13,6 @@ var data = {};
 module.exports = {
     getAll: function(req, res){
         db.clientSub.hgetall(db.ROOMS, function (err, obj) {
-
-            //var jsonUser = JSON.parse(obj);
-
             return res.json(obj);
         });
 
@@ -61,15 +58,10 @@ module.exports = {
 
                 console.log(ListRooms);
 
-                res.json(ListRooms);
+                return res.json(ListRooms);
 
         });
     },
-
-    /** TODO CREATE, DELETE
-     *
-     * CREATE in Hash ROOMS and Hash ROOM
-     * **/
     create: function(req, res){
         var room = {};
 

@@ -1,5 +1,5 @@
-roomModule.controller('RoomCtrl', ['$scope', 'RoomService', 'SoundcloudService', '$rootScope', '$modal', '$location',
-    function($scope, RoomService, SoundcloudService, $rootScope, $modal, $location) {
+roomModule.controller('RoomCtrl', ['$scope', '$interval', 'RoomService', 'SoundcloudService', '$rootScope', '$route', '$modal', '$location',
+    function($scope, $interval, RoomService, SoundcloudService, $rootScope, $route, $modal, $location) {
 
     $scope.roomData = [];
 
@@ -15,6 +15,8 @@ roomModule.controller('RoomCtrl', ['$scope', 'RoomService', 'SoundcloudService',
          $scope.mainContentViewPath ="templates/home/welcome.html";
      }
 
+    $scope.playlistContentViewPath = "templates/manager/playlist.html";
+
     //Display all the Room Available
     function displayRoomData(){
 
@@ -25,27 +27,41 @@ roomModule.controller('RoomCtrl', ['$scope', 'RoomService', 'SoundcloudService',
 
         if($rootScope.idRoomSelected == undefined)
             $location.path('/');
-        else
+        else {
             RoomService.getAll(room.name).success(function (data) {
                 if (data != undefined) {
                     $scope.roomData = data;
                 }
             });
-            RoomService.getTracks(room.name).success(function(data){
-                if(data != undefined){
-                    $scope.roomTracks = data
-                    console.log($scope.roomTracks);
 
-                }
-            });
+        }
     }
 
     //Display Room
     displayRoomData();
 
-    /** TODO *
-     * Delete Room from Rooms List
-     * */
+    function displayPlaylist(){
+        if($rootScope.idRoomSelected == undefined)
+            $location.path('/');
+        else {
+            var idRoomSelected = $rootScope.idRoomSelected;
+            RoomService.getPlaylist(idRoomSelected).success(function (data) {
+                $scope.roomPlaylist = data;
+                console.log($scope.roomPlaylist);
+            })
+        }
+    }
+    displayPlaylist();
+
+    var refreshPlaylist = setInterval(function () {displayPlaylist()}, 10000);
+
+    $('#trackList').ready(function() {
+        refreshPlaylist
+    });
+
+
+    /** TODO Delete Room from Rooms List
+     *  **/
     $scope.closeRoom = function(){
         RoomService.delete($rootScope.idRoomSelected).success(function () {
             toastr.warning("Room :" +  $scope.roomData.roomName +  " has been deleted");
@@ -56,6 +72,7 @@ roomModule.controller('RoomCtrl', ['$scope', 'RoomService', 'SoundcloudService',
     //Close Room:idRoomSelected and back to Rooms List
     $scope.leaveRoom = function(){
         $location.path('/');
+        clearInterval(refreshPlaylist);
     };
 
 
@@ -99,9 +116,7 @@ roomModule.controller('RoomCtrl', ['$scope', 'RoomService', 'SoundcloudService',
 
     $scope.userSelected = {};
 
-    /** TODO
-     * Search from User Profile id in /users/:id
-     * Get ALL /users/:id/tracks and choose in modal
+    /** TODO Search from User Profile id in /users/:id, Get ALL /users/:id/tracks and choose in modal
      * **/
     $scope.trackByUser = function(user){
         console.log(user);
@@ -127,6 +142,8 @@ roomModule.controller('RoomCtrl', ['$scope', 'RoomService', 'SoundcloudService',
 
     $scope.closeModal = function(){
         $scope.modalTrackByUser.hide();
+        $route.reload();
+        //Reset User Selected in Search
         $scope.userSelected.username = undefined;
         $scope.userSelected.id = undefined;
     }
@@ -139,9 +156,11 @@ roomModule.controller('RoomCtrl', ['$scope', 'RoomService', 'SoundcloudService',
     /**
      * Select Track In Modal and post in idPlaylist:idRoomSelected
      */
-    $scope.selectTrackModal = function(idTrack){
-
-        RoomService.setPlaylist();
-
+    $scope.selectTrackModal = function(trackSelected){
+        RoomService.setPlaylist(trackSelected, $rootScope.idRoomSelected);
     }
+
+
+
+
 }]);

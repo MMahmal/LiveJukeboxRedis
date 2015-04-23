@@ -6,7 +6,7 @@ var express = require('express'),
   user = require('./routes/rest/user'),
   room = require('./routes/rest/room'),
   track = require('./routes/rest/track'),
-  playlist = require('/routes/rest/playlist'),
+  playlist = require('./routes/rest/playlist'),
   http = require('http'),
   path = require('path'),
     db = require('./database');
@@ -28,7 +28,7 @@ var env = process.env.NODE_ENV || 'development';
 
 // production only
 if (env === 'production') {
-  // TODO
+  //TODO
 }
 
 
@@ -59,12 +59,10 @@ app.patch('/rest/tracks/:idRoom/search', track.pathSearch);
 app.post('/rest/tracks/:idRoom/search', track.postSearch);
 app.get('/rest/tracks/:idRoom/search', track.getSearch);
 
-app.post('/rest/playlist', playlist.addTrack);
-app.get('/rest/playlist', playlist.getAll);
-app.get('/rest/playlist', playlist.getFirst);
-app.post('/rest/playlist', playlist.delFirst);
-
-
+app.post('/rest/playlist/:idRoom', playlist.addTrack);
+app.get('/rest/playlist/:idRoom', playlist.getAll);
+app.get('/rest/playlist/:idRoom/first', playlist.getFirst);
+app.post('/rest/playlist/:idRoom/delFirst', playlist.delFirst);
 
 /**
  * Start Server

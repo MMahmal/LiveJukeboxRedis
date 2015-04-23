@@ -23,7 +23,7 @@ module.exports = {
             tracksList.push(body[trackIndex]);
         }
 
-        db.clientPub.set(setName, tracksList);
+        db.clientSub.set(setName, tracksList);
         return res.json(tracksList);
 
     },

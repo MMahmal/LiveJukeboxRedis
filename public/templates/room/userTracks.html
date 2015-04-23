@@ -10,15 +10,13 @@
             <div class="modal-body">
                 <div class="searchList">
                     <div ng-repeat="resultModal in SearchModalResults">
-
                         <div class="searchResultTrack">
                             <span>Title : {{resultModal.title}}</span>
                             <span>User : {{resultModal.user.username}}</span>
                             <span>Id : {{resultModal.id}}</span>
                             <span>URI : {{resultModal.uri}}</span>
-                            <button ng-click="playTrack(resultModal.id, 'play')">Play</button>
+                            <button ng-click="selectTrackModal(resultModal)">Add</button>
                         </div>
-
                     </div>
                 </div>
             </div>

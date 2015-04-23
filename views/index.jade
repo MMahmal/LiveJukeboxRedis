@@ -13,14 +13,8 @@ html(ng-app="LiveJukebox")
     body
 
         div(id="leftMenu")
-            h1(id="menuTitle") LiveJukebox
-            ul(class="nav nav-pills nav-stacked")
-                li(role="presentation")
-                    a(href="#/") Home
-                li(role="presentation")
-                    a(href="#/login") Join
-                li(role="presentation")
-                    a(href="#/") Search
+            a(href="#/")
+                img(id="logo" src="/ressources/img/logo.png")
         div(id="content")
             div(ng-view)
 

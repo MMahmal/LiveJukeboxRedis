@@ -32,8 +32,15 @@ roomModule.factory('RoomService', ['$http', function ($http) {
 
     };
 
-    roomFunction.setPlaylist = function(trackData) {
-        return $http.post('http://localhost:3000/rest/playlist' + trackData)
+    roomFunction.setPlaylist = function(trackData, idRoom) {
+        return $http.post('http://localhost:3000/rest/playlist/' + idRoom, trackData)
+    }
+
+    roomFunction.getPlaylist = function(idRoom){
+        return $http.get('http://localhost:3000/rest/playlist/' + idRoom)
+            .error(function(e){
+                toastr.error("Error Getting Playlist");
+        })
     }
 
 
